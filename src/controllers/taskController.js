@@ -1,4 +1,4 @@
-import Task from "../../../models/Task.js";
+import Task from "../../models/Task.js";
 
 // @desc    Create a new task
 // @route   POST /tasks

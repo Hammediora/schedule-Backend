@@ -1,6 +1,6 @@
-import Schedule from '../../../models/Schedule.js';
-import User from '../../../models/User.js';
-import Task from '../../../models/Task.js';
+import Schedule from '../../models/Schedule.js'
+import User from  '../../models/User.js';
+import Task from '../../models/Task.js';
 
 // @desc    Create a new schedule
 // @route   POST /schedules

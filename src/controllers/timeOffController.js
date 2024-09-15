@@ -1,5 +1,5 @@
-import TimeOffRequest from '../../../models/TimeOffRequest.js';
-import User from '../../../models/User.js';
+import TimeOffRequest from '../../models/TimeOffRequest.js';
+import User from '../../models/User.js';
 
 // @desc    Create a new time-off request
 // @route   POST /timeoff

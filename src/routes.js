@@ -1,28 +1,28 @@
 import express from 'express';
-import scheduleController from './controllers/Schedule/scheduleController.js';
-import UserController from './controllers/User/UserController.js';
-import taskController from './controllers/Task/taskController.js';
-import timeOffController from './controllers/TimeOff/timeOffController.js';
+import scheduleController from './controllers/scheduleController.js';
+import UserController from './controllers/UserController.js';
+import taskController from './controllers/taskController.js';
+import timeOffController from './controllers/timeOffController.js';
 
 const router = express.Router();
 
 // User routes
-router.post('/createTask', taskController.createTask);  
-router.get('/getTask', taskController.getTasks);  
-
+router.post('/users', UserController.createUser);    // Create a new user
+router.get('/users', UserController.getAllUsers);    // Get all users for visualization
+router.get('/users/login', UserController.loginUser);
 
 // Task routes
-router.post('/createUser', UserController.createUser);  
-router.get('/getUser', UserController.getUsers);   
+router.post('/tasks', taskController.createTask);  // POST to create a task
+router.get('/tasks', taskController.getTasks);     // GET to fetch all tasks
 
-// Create and fetch schedules
-router.post('/createSchedule', scheduleController.createSchedule);
-router.get('/getSchedule', scheduleController.getSchedules);
-router.put('/:id/approve', scheduleController.approveSchedule);
+// Schedule routes
+router.post('/schedules', scheduleController.createSchedule);  // POST to create a schedule
+router.get('/schedules', scheduleController.getSchedules);     // GET to fetch all schedules
+router.put('/schedules/:id/approve', scheduleController.approveSchedule);  // PUT to approve a schedule by ID
 
-// Time-off requests
-router.post('/createTimeOffRequest', timeOffController.createTimeOffRequest);
-router.get('/getTimeOffRequests', timeOffController.getTimeOffRequests);
-router.put('/:id/approve', timeOffController.approveTimeOffRequest);
+// Time-off routes
+router.post('/timeoff', timeOffController.createTimeOffRequest);  // POST to create a time-off request
+router.get('/timeoff', timeOffController.getTimeOffRequests);     // GET to fetch all time-off requests
+router.put('/timeoff/:id/approve', timeOffController.approveTimeOffRequest);  // PUT to approve a time-off request by ID
 
 export default router;
