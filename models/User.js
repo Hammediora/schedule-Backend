@@ -2,10 +2,10 @@ import mongoose from 'mongoose';
 
 // Define the User schema with both Firebase UID and Employee ID
 const UserSchema = new mongoose.Schema({
-  firebaseUid: { type: String, required: true, unique: true }, 
-  employeeId: { type: String, unique: true },  
+  firebaseUid: { type: String, default: null},  
+  employeeId: { type: String, unique: true },   
   name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
+  email: { type: String, default: null, unique: true, sparse: true },  
   role: { 
     type: String, 
     enum: ['general manager', 'service manager', 'kitchen manager', 'crew member'],  

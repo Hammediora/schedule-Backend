@@ -12,7 +12,6 @@ export const generateEmployeeId = async (firstName, lastName) => {
   // Check if the generated employeeId already exists in the database
   const existingUser = await User.findOne({ employeeId });
   if (existingUser) {
-    // Recursively generate a new ID if the one generated is not unique
     return generateEmployeeId(firstName, lastName);
   }
 

@@ -2,11 +2,11 @@ import mongoose from 'mongoose';
 
 // Define the Notification schema
 const NotificationSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },  // Reference to the User
-  message: { type: String, required: true },  // Notification message content
-  read_status: { type: Boolean, default: false },  // Whether the user has read the notification
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, 
+  message: { type: String, required: true },  
+  read_status: { type: Boolean, default: false },  
 }, {
-  timestamps: true  // Automatically create `createdAt` and `updatedAt` fields
+  timestamps: true  
 });
 
 // Create the Notification model
