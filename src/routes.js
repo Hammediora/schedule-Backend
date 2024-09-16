@@ -19,7 +19,10 @@ router.delete('/users/:id', UserController.deleteEmployee);
 
 // Task routes
 router.post('/tasks', taskController.createTask);                    
-router.get('/tasks', taskController.getTasks);                      
+router.get('/tasks', taskController.getTasks);
+router.get('/tasks', taskController.getTaskById);   
+router.put('/task', taskController.updateTask);
+router.delete('task', taskController.deleteTask)             
 
 // Schedule routes
 router.post('/schedules', scheduleController.createSchedule);      
