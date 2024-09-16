@@ -5,7 +5,7 @@ export const generateEmployeeId = async (firstName, lastName) => {
   const initials = firstName.charAt(0).toUpperCase() + lastName.charAt(0).toUpperCase();
 
   // Generate a random 5-digit number
-  const randomNumber = Math.floor(10000 + Math.random() * 90000); // Generates a number between 10000 and 99999
+  const randomNumber = Math.floor(10000 + Math.random() * 90000); 
 
   const employeeId = `${initials}${randomNumber}`;
 
