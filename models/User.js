@@ -14,19 +14,22 @@ const UserSchema = new mongoose.Schema({
 
   // Dedicated fields for availability and shift preferences
   availability: {
-    monday: { start: String, end: String },  
-    tuesday: { start: String, end: String },  
-    wednesday: { start: String, end: String },
-    thursday: { start: String, end: String },
-    friday: { start: String, end: String },
-    saturday: { start: String, end: String },
-    sunday: { start: String, end: String }
+    monday: { start: String, end: String, off: { type: Boolean, default: false } },  
+    tuesday: { start: String, end: String, off: { type: Boolean, default: false } },  
+    wednesday: { start: String, end: String, off: { type: Boolean, default: false } },
+    thursday: { start: String, end: String, off: { type: Boolean, default: false } },
+    friday: { start: String, end: String, off: { type: Boolean, default: false } },
+    saturday: { start: String, end: String, off: { type: Boolean, default: false } },
+    sunday: { start: String, end: String, off: { type: Boolean, default: false } }
   },
 
   shift_preferences: { type: String, enum: ['morning', 'afternoon', 'evening', 'night'], default: 'morning' },
 
   // JSON field for additional, non-queryable preferences
-  additional_preferences: { type: Object, default: {} }
+  additional_preferences: { type: Object, default: {} },
+
+  // Array of assigned tasks (reference to Task model)
+  assignedTasks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Task' }] 
 
 }, {
   timestamps: true

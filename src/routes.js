@@ -1,37 +1,40 @@
 import express from 'express';
 import scheduleController from './controllers/scheduleController.js';
-import UserController from './controllers/UserController.js';  
+import userController from './controllers/UserController.js';
 import taskController from './controllers/taskController.js';
 import timeOffController from './controllers/timeOffController.js';
 
 const router = express.Router();
 
-// User routes
-router.post('/users', UserController.createUser);                   
-router.get('/users', UserController.getAllUsers);                    
-router.get('/users/login', UserController.loginUser);               
-router.post('/users/addEmployee', UserController.addEmployee);       
+// -------------------- User Routes --------------------
+router.post('/users', userController.createUser);
+router.get('/users', userController.getAllUsers);
+router.get('/users/login', userController.loginUser);
+router.post('/users/addEmployee', userController.addEmployee);
+router.get('/users/:id', userController.getEmployeeById);
+router.put('/users/:id', userController.updateEmployee);
+router.delete('/users/:id', userController.deleteEmployee);
+router.post('/users/:id/tasks', userController.assignTasksToUser);
+router.get('/users/:id/tasks', userController.getTasksForUser);
 
-// New user-related routes
-router.get('/users/:id', UserController.getEmployeeById);           
-router.put('/users/:id', UserController.updateEmployee);           
-router.delete('/users/:id', UserController.deleteEmployee);     
-
-// Task routes
-router.post('/tasks', taskController.createTask);                    
+// -------------------- Task Routes --------------------
+router.post('/tasks', taskController.createTask);
 router.get('/tasks', taskController.getTasks);
-router.get('/tasks', taskController.getTaskById);   
-router.put('/task', taskController.updateTask);
-router.delete('task', taskController.deleteTask)             
+router.get('/tasks/:id', taskController.getTaskById);
+router.put('/tasks/:id', taskController.updateTask);
+router.delete('/tasks/:id', taskController.deleteTask);
+router.get('/tasks/predefined', taskController.getPredefinedTasks);
 
-// Schedule routes
-router.post('/schedules', scheduleController.createSchedule);      
-router.get('/schedules', scheduleController.getSchedules);          
-router.put('/schedules/:id/approve', scheduleController.approveSchedule); 
+// -------------------- Schedule Routes --------------------
+router.post('/schedules/generate-weekly', scheduleController.generateSchedulesForWeek); 
+router.get('/schedules', scheduleController.getSchedules);
+router.put('/schedules/:scheduleId', scheduleController.updateSchedule);
+router.delete('/schedules/:scheduleId', scheduleController.softDeleteSchedule);
+router.put('/schedules/:scheduleId/approve', scheduleController.approveSchedule);  
 
-// Time-off routes
-router.post('/timeoff', timeOffController.createTimeOffRequest);     
-router.get('/timeoff', timeOffController.getTimeOffRequests);       
-router.put('/timeoff/:id/approve', timeOffController.approveTimeOffRequest);  
+// -------------------- Time-off Routes --------------------
+router.post('/timeoff', timeOffController.createTimeOffRequest);
+router.get('/timeoff', timeOffController.getTimeOffRequests);
+router.put('/timeoff/:id/approve', timeOffController.approveTimeOffRequest);
 
 export default router;

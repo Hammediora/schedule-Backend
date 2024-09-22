@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 // Define the Task schema
 const TaskSchema = new mongoose.Schema({
-  task: { type: String, required: true }, 
+  task_name: { type: String, required: true },
   description: { type: String }, 
 }, {
   timestamps: true  
