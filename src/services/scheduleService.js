@@ -24,7 +24,7 @@ const generateWeeklySchedules = async (salesData, requestedWeekStart) => {
       throw new Error(`Cannot generate schedules for previous weeks. The next available week starts on ${nextAvailableWeekStart}.`);
     }
 
-    const daysOfWeek = Object.keys(salesData);  // e.g., ['monday', 'tuesday', ...]
+    const daysOfWeek = Object.keys(salesData);  
     const schedules = [];
 
     // Ensure the predefined tasks are available in the database
@@ -63,7 +63,7 @@ const generateWeeklySchedules = async (salesData, requestedWeekStart) => {
         }
 
         const userAvailability = user.availability[day];
-        const shiftPreference = user.shift_preferences || 'morning';  // Default to morning if no preference
+        const shiftPreference = user.shift_preferences || 'morning';  
         const task = assignTaskBasedOnRole(user.role, predefinedTasks);
 
         const dateForShift = days[day.toLowerCase()];  // Get the exact date for the day
@@ -113,7 +113,7 @@ const generateWeeklySchedules = async (salesData, requestedWeekStart) => {
       }
     }
 
-    return schedules;  // Return all the generated schedules
+    return schedules;  
   } catch (error) {
     console.error(error);
     throw new Error('Failed to generate schedules');
